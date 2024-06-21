@@ -22,28 +22,35 @@ unset($_SESSION['cities']); // Clear the session variable after use
 </head>
 
 <body class="bg-info bg-opacity-25">
-    <div class="container m-5">
-        <form action="loop.php" method="post">
-            <div class="input-group flex-nowrap mt-4">
-                <span class="input-group-text" id="addon-wrapping">Input:</span>
-                <input type="text" class="form-control" id="palindrome" name="palindrome" aria-describedby="addon-wrapping">
-            </div>
-            <button type="submit" class="btn btn-success mt-2" name="submit_for">Check using for loop</button>
-            <button type="submit" class="btn btn-success mt-2" name="submit_while">Check using while loop</button>
-            <button type="submit" class="btn btn-success mt-2" name="submit_foreach">Check using foreach loop</button>
-            <?php
-            // Check if 'result' parameter is set in the URL
-            if (isset($_GET['result'])) {
-                $result = $_GET['result'];
-                echo '<h4 class="mt-2">Result: <span>' . htmlspecialchars($result) . '</span></h4>';
-            }
-            ?>
-        </form>
-    </div>
 
+
+    <!-- 1st part  loop -->
+    <center>
+        <div class="container m-5">
+            <form action="loop.php" method="post">
+                <div class="input-group flex-nowrap mt-4">
+                    <span class="input-group-text" id="addon-wrapping">Input:</span>
+                    <input type="text" class="form-control" id="palindrome" name="palindrome" aria-describedby="addon-wrapping">
+                </div>
+                <button type="submit" class="btn btn-success mt-2" name="submit_for">Check using for loop</button>
+                <button type="submit" class="btn btn-success mt-2" name="submit_while">Check using while loop</button>
+                <button type="submit" class="btn btn-success mt-2" name="submit_foreach">Check using foreach loop</button>
+                <?php
+                // Check if 'result' parameter is set in the URL
+                if (isset($_GET['result'])) {
+                    $result = $_GET['result'];
+                    echo '<h4 class="mt-2">Result: <span>' . htmlspecialchars($result) . '</span></h4>';
+                }
+                ?>
+            </form>
+        </div>
+    </center>
+
+    <!-- end of 1st part -->
     <hr>
 
 
+    <!-- 1st  part number 2 -->
     <div class="container mt-5">
         <div class="row">
 
@@ -55,13 +62,15 @@ unset($_SESSION['cities']); // Clear the session variable after use
                         <input type="number" class="form-control" name="num" value="5" aria-describedby="addon-wrapping">
                     </div>
 
-                    <div class="container p-2 bg-secondary mt-2"><?php echo $output; ?></div>
+                    <div class="container p-2 bg-secondary mt-2 h-50"><?php echo $output; ?></div>
                     <button type="submit" class="btn btn-success mt-2">Submit</button>
 
                 </form>
             </div>
 
 
+
+            <!-- odd or even -->
             <div class="col-md-3 card p-5 shadow bg-info bg-opacity-50 m-4">
                 <form action="" method="post">
                     <div class="input-group flex-nowrap mt-4">
@@ -80,11 +89,15 @@ unset($_SESSION['cities']); // Clear the session variable after use
                         }
                     }
                     ?>
-                    <?php echo "<h6 class='p-3 bg-secondary mt-2'>Entered number is an <span>$result</span></h6>"; ?>
+                    <?php echo "<h6 class='p-3 bg-secondary mt-2 h-50'>Entered number is an <span>$result</span></h6>"; ?>
                     <button type="submit" class="btn btn-success mt-2">Submit</button>
                 </form>
             </div>
+            <!-- end of odd or even -->
 
+
+
+            <!-- country -->
             <div class="col-md-3 card p-5 shadow bg-info bg-opacity-50 m-4">
 
                 <form action="country.php" method="post">
@@ -97,18 +110,19 @@ unset($_SESSION['cities']); // Clear the session variable after use
                             <option value="Philippines">Philippines</option>
                         </select>
                     </div>
-                    <div class="container bg-secondary mt-2 p-2">
+                    <div class="container bg-secondary mt-2 p-2 h-50">
                         <h5>City: <span><?php echo htmlspecialchars($cities); ?></span></h5>
                     </div>
                     <button type="submit" class="btn btn-success mt-2">Submit</button>
                 </form>
             </div>
 
-
+            <!-- end part of country -->
 
             <hr>
 
 
+            <!-- months -->
             <center>
                 <p>January-February March April May June July August/September.October November#December</p>
             </center>
@@ -144,13 +158,11 @@ unset($_SESSION['cities']); // Clear the session variable after use
                         </div>
                     </form>
                 </div>
-
-
-
+                <!-- end of sort months -->
             </div>
 
-
         </div>
+        <!-- end of row -->
 
         <hr>
         <br>
@@ -160,6 +172,8 @@ unset($_SESSION['cities']); // Clear the session variable after use
 
 
         <center>
+
+            <!-- names -->
             <div class="container mt-4">
                 <form method="post" action="fullnames.php">
                     <button type="submit" id="generateButton" name="generate" class="btn btn-success">Generate Full Names</button>
@@ -178,14 +192,32 @@ unset($_SESSION['cities']); // Clear the session variable after use
                             }
                             ?>
                         </p>
-                        </ddi>
                     </div>
-
-
-
                 </div>
 
+
+
+            </div>
+
         </center>
+
+        <br>
+        <hr>
+        <br>
+
+
+        <!-- part 4 -->
+
+        <div class="container">
+            <div class="card p-5 shadow bg-info bg-opacity-50 m-4">
+
+                <!-- pass the selectPerson here to display it -->
+                <?php
+                include "selectPerson.php";
+                ?>
+            </div>
+        </div>
+        <!-- end of part 4 -->
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<!-- palindrome -->
 <?php
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

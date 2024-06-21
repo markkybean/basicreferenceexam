@@ -1,3 +1,4 @@
+<!-- triangel loop -->
 <?php
 $num = $_POST['num'];
 $output = '';
@@ -7,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST['num'])) {
         echo "Please enter a number.";
     } else {
-        $num = intval($_POST['num']); // Ensure $num is an integer
+        $num = intval($_POST['num']); 
         for ($i = 1; $i <= $num; $i++) {
             for ($j = $i; $j <= $num; $j++) {
                 $output .= $j;
