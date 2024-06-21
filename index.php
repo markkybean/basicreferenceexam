@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 // Retrieve and clear the output for loop1.php
 $output = isset($_SESSION['output']) ? $_SESSION['output'] : '';
@@ -65,7 +66,7 @@ unset($_SESSION['cities']); // Clear the session variable after use
                 <form action="" method="post">
                     <div class="input-group flex-nowrap mt-4">
                         <span class="input-group-text" id="addon-wrapping">Enter a number:</span>
-                        <input type="number" class="form-control" name="number" aria-describedby="addon-wrapping">
+                        <input type="number" class="form-control" name="number" aria-describedby="addon-wrapping" required>
                     </div>
 
 
@@ -131,18 +132,18 @@ unset($_SESSION['cities']); // Clear the session variable after use
 
 
                 <div class="col-md-4 card p-5 shadow bg-info bg-opacity-50 m-4">
-    <form action="sortMonth.php" method="post">
-        <p>Generate to sort the months</p>
-        <button type="submit" class="btn btn-success mt-2" name="sorted">Generate</button>
-        <div class="container m-2">
-            <p> <?php
-            if (isset($_GET['sortMonth'])) {
-                echo $_GET['sortMonth'];
-            }
-            ?></p>
-        </div>
-    </form>
-</div>
+                    <form action="sortMonth.php" method="post">
+                        <p>Generate to sort the months</p>
+                        <button type="submit" class="btn btn-success mt-2" name="sorted">Generate</button>
+                        <div class="container m-2">
+                            <p> <?php
+                                if (isset($_GET['sortMonth'])) {
+                                    echo $_GET['sortMonth'];
+                                }
+                                ?></p>
+                        </div>
+                    </form>
+                </div>
 
 
 
@@ -151,6 +152,40 @@ unset($_SESSION['cities']); // Clear the session variable after use
 
         </div>
 
+        <hr>
+        <br>
+        <?php
+        include "names.php";
+        ?>
+
+
+        <center>
+            <div class="container mt-4">
+                <form method="post" action="fullnames.php">
+                    <button type="submit" id="generateButton" name="generate" class="btn btn-success">Generate Full Names</button>
+                </form>
+
+                <div class="container mt-4">
+                    <h2>Full Names</h2>
+
+                    <div class="col-md-4 card p-5 shadow bg-info bg-opacity-50 m-4">
+                        <p>
+                            <?php
+                            // Check if all_names is set in the GET parameters
+                            if (isset($_GET['all_names'])) {
+                                // Output the decoded and sanitized all_names with line breaks
+                                echo nl2br(htmlspecialchars($_GET['all_names']));
+                            }
+                            ?>
+                        </p>
+                        </ddi>
+                    </div>
+
+
+
+                </div>
+
+        </center>
 </body>
 
 </html>
