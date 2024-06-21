@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: index.php?result=" . urlencode($result));
     exit();
 
-    $num = $_POST['num'];
-    echo $input;
+    // $num = $_POST['num'];
+    // echo $input;
 }
 ?>
