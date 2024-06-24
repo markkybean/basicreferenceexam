@@ -75,21 +75,21 @@ unset($_SESSION['cities']); // Clear the session variable after use
                 <form action="" method="post">
                     <div class="input-group flex-nowrap mt-4">
                         <span class="input-group-text" id="addon-wrapping">Enter a number:</span>
-                        <input type="number" class="form-control" name="number" aria-describedby="addon-wrapping" required>
+                        <input type="number" class="form-control" name="num" aria-describedby="addon-wrapping" required>
                     </div>
 
 
                     <?php
-                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['number'])) {
-                        $num = $_POST['number'];
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['num'])) {
+                        $num = $_POST['num'];
                         if ($num % 2 == 0) {
-                            $result = 'even number';
+                            $numresult = 'even number';
                         } else {
-                            $result = 'odd number';
+                            $numresult = 'odd number';
                         }
                     }
                     ?>
-                    <?php echo "<h6 class='p-3 bg-secondary mt-2 h-50'>Entered number is an <span>$result</span></h6>"; ?>
+                    <?php echo "<h6 class='p-3 bg-secondary mt-2 h-50'>Entered number is an <span>$numresult</span></h6>"; ?>
                     <button type="submit" class="btn btn-success mt-2">Submit</button>
                 </form>
             </div>
@@ -110,9 +110,21 @@ unset($_SESSION['cities']); // Clear the session variable after use
                             <option value="Philippines">Philippines</option>
                         </select>
                     </div>
-                    <div class="container bg-secondary mt-2 p-2 h-50">
+                    <!-- <div class="container bg-secondary mt-2 p-2 h-50">
                         <h5>City: <span><?php echo htmlspecialchars($cities); ?></span></h5>
-                    </div>
+                    </div> -->
+                   <div class="dropdown mt-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    City
+                </button>
+                <ul class="dropdown-menu">
+                    <?php if (!empty($cities)): ?>
+                        <?php foreach (explode(',', $cities) as $city): ?>
+                            <li><a class="dropdown-item" href="#"><?php echo htmlspecialchars(trim($city)); ?></a></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            </div>
                     <button type="submit" class="btn btn-success mt-2">Submit</button>
                 </form>
             </div>
@@ -219,5 +231,6 @@ unset($_SESSION['cities']); // Clear the session variable after use
         </div>
         <!-- end of part 4 -->
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>
